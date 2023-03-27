@@ -1,0 +1,21 @@
+.list {
+  display: flex;
+  gap:  2em;
+}
+
+/* PCとモバイル端末でのホバーの挙動 */
+@media (hover:hover) {
+  .list a:hover {
+    color: var(--accent);
+  }
+}
+
+@media (hover:none) {
+  .list a:hover {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .list a:active {
+    color: var(--accent)
+  }
+}
