@@ -2,9 +2,9 @@ import styles from "styles/social.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTwitter, faFacebookF, faGithub } from "@fortawesome/free-brands-svg-icons";
 
-export default function social() {
+export default function social( { iconSize = 'initial'}) {
   return (
-    <ul className={styles.list}>
+    <ul className={styles.list} style={{'--icon-size': iconSize}}>
       <li>
         <a href="https://twitter.com">
           <FontAwesomeIcon icon={faTwitter} />
