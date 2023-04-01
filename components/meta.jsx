@@ -31,7 +31,6 @@ export default function Meta({ pageTitle, pageDesc, pageImg, pageImgW, pageImgH 
       <meta property="og:url" content={url}/>
       <link rel="icon" href={siteIcon} />
       <link rel="apple-touch-icon" href={siteIcon} />
-
       <meta property="og:image" content={imgUrl}/>
       <meta property="og:image:width" content={imgW}/>
       <meta property="og:image:height" content={imgH}/>

@@ -6,6 +6,10 @@ import PostBody from "components/post-body";
 import { TwoColumn, TwoColumnMain, TwoColumnSidebar } from "components/two-column";
 import ConvertBody from "components/convert-body";
 import PostCategories from "components/post-categories";
+import { extractText } from "lib/extract-text";
+import Meta from "@/components/meta";
+import { eyecatchLocal } from "lib/constant";
+import { getPlaiceholder } from "plaiceholder";
 
 export default function Schedule({
   title,
@@ -13,9 +17,17 @@ export default function Schedule({
   content,
   eyecatch,
   categories,
+  description
 }) {
   return (
     <Container>
+      <Meta
+        pageTitle={title}
+        pageDesc={description}
+        pageImg={eyecatch.url}
+        pageImgW={eyecatch.width}
+        pageImgH={eyecatch.height}
+      />
       <article>
         <PostHeader title={title} subtitle="Blog Article" publish={publish} />
         <figure>
@@ -27,6 +39,8 @@ export default function Schedule({
             sizes="(min-width: 1152px) 1152, 100vw"
             style={{ width: "100%", height: "auto" }}
             priority
+            placeholder="blur"
+            blurDataURL={eyecatch.blurDataURL}
           />
         </figure>
         <TwoColumn>
@@ -45,16 +59,21 @@ export default function Schedule({
 }
 
 export async function getStaticProps() {
-  const slug = "schedule";
+  const slug = "micro";
   const post = await getPostBySlug(slug);
+  const description = extractText(post.content);
+  const eyecatach = post.eyecatch ?? eyecatchLocal
+  const { base64 } = await getPlaiceholder(eyecatach.url);
+  eyecatach.blurDataURL = base64;
 
   return {
     props: {
       title: post.title,
       publish: post.publishDate,
       content: post.content,
-      eyecatch: post.eyecatch,
+      eyecatch: eyecatach,
       categories: post.categories,
+      description: description,
     },
   };
 }
