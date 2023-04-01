@@ -5,6 +5,7 @@ import { getPostBySlug } from "lib/api";
 import PostBody from "components/post-body";
 import { TwoColumn, TwoColumnMain, TwoColumnSidebar } from "components/two-column";
 import ConvertBody from "components/convert-body";
+import PostCategories from "components/post-categories";
 
 export default function Schedule({
   title,
@@ -32,10 +33,11 @@ export default function Schedule({
           <TwoColumnMain>
             <PostBody>
               <ConvertBody contentHTML={content} />
-              {/* <div dangerouslySetInnerHTML={{__html: content}}></div> */}
             </PostBody>
           </TwoColumnMain>
-          <TwoColumnSidebar></TwoColumnSidebar>
+          <TwoColumnSidebar>
+            <PostCategories categories={categories} />
+          </TwoColumnSidebar>
         </TwoColumn>
       </article>
     </Container>
