@@ -28,3 +28,15 @@ export async function getAllSlugs(limit = 100) {
     console.log(/getAllSlugs\n/, err);
   }
 }
+
+export async function getAllPosts(limit = 100) {
+  try {
+    const posts = await client.get({
+      endpoint: "blogs",
+      queries: { fields: "title,slug,eyecatch", orders: "-publishDate", limit: limit },
+    });
+    return posts.contents;
+  } catch (err) {
+    console.log(/getAllPosts\n/, err);
+  }
+}
