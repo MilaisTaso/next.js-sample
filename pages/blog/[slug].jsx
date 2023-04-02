@@ -10,6 +10,7 @@ import { extractText } from "lib/extract-text";
 import Meta from "@/components/meta";
 import { eyecatchLocal } from "lib/constant";
 import { getPlaiceholder } from "plaiceholder";
+import { prevNextPost } from "lib/prev-next-post";
 
 export default function Post({
   title,
@@ -17,7 +18,9 @@ export default function Post({
   content,
   eyecatch,
   categories,
-  description
+  description,
+  prevPost,
+  nextPost,
 }) {
   return (
     <Container>
@@ -53,6 +56,7 @@ export default function Post({
             <PostCategories categories={categories} />
           </TwoColumnSidebar>
         </TwoColumn>
+        
       </article>
     </Container>
   );
@@ -73,6 +77,8 @@ export async function getStaticProps(context) {
   const eyecatach = post.eyecatch ?? eyecatchLocal
   const { base64 } = await getPlaiceholder(eyecatach.url);
   eyecatach.blurDataURL = base64;
+  const allSlugs = await getAllSlugs();
+  const [prevPost, nextPost] = prevNextPost(allSlugs, slug);
 
   return {
     props: {
@@ -82,6 +88,8 @@ export async function getStaticProps(context) {
       eyecatch: eyecatach,
       categories: post.categories,
       description: description,
+      prevPost: prevPost,
+      nextPost: nextPost,
     },
   };
 }
