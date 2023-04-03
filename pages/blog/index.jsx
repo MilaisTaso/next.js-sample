@@ -27,7 +27,7 @@ export async function getStaticProps() {
     const { base64 } = await getPlaiceholder(post.eyecatch.url);
     post.eyecatch.blurDataUrl = base64;
   }
-  
+
     return {
       props: {
         posts: posts,

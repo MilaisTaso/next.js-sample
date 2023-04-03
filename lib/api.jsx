@@ -13,7 +13,7 @@ export async function getPostBySlug(slug) {
     });
     return post.contents[0];
   } catch (err) {
-    console.log(/getPostBySlug\n/, err);
+    console.log("getPostBySlug", err);
   }
 }
 
@@ -25,7 +25,7 @@ export async function getAllSlugs(limit = 100) {
     });
     return slugs.contents;
   } catch (err) {
-    console.log(/getAllSlugs\n/, err);
+    console.log("getAllSlugs", err);
   }
 }
 
@@ -37,6 +37,18 @@ export async function getAllPosts(limit = 100) {
     });
     return posts.contents;
   } catch (err) {
-    console.log(/getAllPosts\n/, err);
+    console.log("getAllPosts", err);
+  }
+}
+
+export async function getAllCatalogs(limit = 100) {
+  try {
+    const catalogs = await client.get({
+      endpoint: "categories",
+      queries: { fields: "name,id,slug", limit: limit },
+    });
+    return catalogs.contents;
+  } catch (err) {
+    console.log(/getAllCatalogs\n/, err);
   }
 }

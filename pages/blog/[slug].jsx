@@ -40,6 +40,7 @@ export default function Post({
         <PostHeader title={title} subtitle="Blog Article" publish={publish} />
         <figure>
           <Image
+          key={eyecatch.url}
             src={eyecatch.url}
             alt="アイキャッチ画像"
             width={eyecatch.width}
