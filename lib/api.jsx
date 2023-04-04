@@ -52,3 +52,19 @@ export async function getAllCatalogs(limit = 100) {
     console.log(/getAllCatalogs\n/, err);
   }
 }
+
+export async function getAllPostsByCategory(catID, limit = 100) {
+  try {
+    const posts = await client.get({
+      endpoint: "blogs",
+      queries: { filters: `categories[contains]${catID}`,
+                  fields: "title,slug,eyecatch",
+                  orders: "-publishDate",
+                  limit: limit
+                },
+    });
+    return posts.contents;
+  } catch (err) {
+    console.log("getAllPostsByCategory", err);
+  }
+}

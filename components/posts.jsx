@@ -3,7 +3,6 @@ import Link from "next/link";
 import Image from "next/image";
 
 export default function Posts({ posts }) {
-  console.log(posts.eyecatch);
   return (
     <div className={styles.gridContainer}>
       {posts.map(({ title, slug, eyecatch }) => (
