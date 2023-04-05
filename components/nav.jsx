@@ -15,7 +15,7 @@ export default function Nav() {
   return (
     <nav className={navIsOpen ? styles.open : styles.close}>
       {navIsOpen && (
-        <styles jsx global>
+        <style jsx global>
           {`
           @media (max-width: 767px) {
             body {
@@ -24,8 +24,8 @@ export default function Nav() {
               width: 100%;
             }
           }
-        `}{" "}
-        </styles>
+        `}
+        </style>
       )}
       <button className={styles.btn} onClick={toggleNav}>
         <span className={styles.bar}></span>
