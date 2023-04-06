@@ -11,6 +11,7 @@ import {
 } from "@/components/two-column";
 import Image from "next/image";
 import Accordion from "@/components/accordion";
+import BlueFrame from "components/nested-layout";
 
 export default function About() {
   return (
@@ -77,4 +78,8 @@ export default function About() {
       </Container>
     </>
   );
+}
+
+About.getLayout = function getLayout(page) {
+  return <BlueFrame>{page}</BlueFrame>
 }

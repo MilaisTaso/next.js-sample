@@ -7,6 +7,7 @@ import { config } from "@fortawesome/fontawesome-svg-core";
 import * as gtag from "lib/gtag";
 import Script from "next/script";
 config.autoAddCss = false;
+
 export default function App({ Component, pageProps }) {
   const router = useRouter();
   useEffect(() => {
@@ -18,6 +19,7 @@ export default function App({ Component, pageProps }) {
       router.events.off("routeChangeComplete", handleRouteChange);
     };
   }, [router.events]);
+  const getLayout = Component.getLayout || ((page) => page);
   return (
     <>
       <Script
@@ -38,7 +40,7 @@ export default function App({ Component, pageProps }) {
         }}
       />
       <Layout>
-        <Component {...pageProps} />
+        { getLayout(<Component {...pageProps} />)}
       </Layout>
     </>
   );
