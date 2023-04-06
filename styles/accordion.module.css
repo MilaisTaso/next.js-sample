@@ -59,6 +59,7 @@
     height: auto;
   }
 }
+
 @keyframes closeAnim {
   0% {
     height: var(--text-height);

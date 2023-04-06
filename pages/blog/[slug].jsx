@@ -11,7 +11,7 @@ import {
 import ConvertBody from "components/convert-body";
 import PostCategories from "components/post-categories";
 import { extractText } from "lib/extract-text";
-import Meta from "@/components/meta";
+import Meta from "components/meta";
 import { eyecatchLocal } from "lib/constant";
 import { getPlaiceholder } from "plaiceholder";
 import { prevNextPost } from "lib/prev-next-post";

@@ -1,7 +1,7 @@
-import Container from "@/components/container";
-import Meta from "@/components/meta";
-import Posts from "@/components/posts";
-import { eyecatchLocal } from "@/lib/constant";
+import Container from "components/container";
+import Meta from "components/meta";
+import Posts from "components/posts";
+import { eyecatchLocal } from "lib/constant";
 import Hero from "components/hero";
 import { getAllPosts } from "lib/api";
 import { getPlaiceholder } from "plaiceholder";
