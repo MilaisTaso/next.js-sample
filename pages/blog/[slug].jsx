@@ -40,7 +40,7 @@ export default function Post({
         <PostHeader title={title} subtitle="Blog Article" publish={publish} />
         <figure>
           <Image
-          key={eyecatch.url}
+            key={eyecatch.url}
             src={eyecatch.url}
             alt="アイキャッチ画像"
             width={eyecatch.width}
@@ -74,10 +74,10 @@ export default function Post({
 }
 
 export async function getStaticPaths() {
-  const allSlugs = await getAllSlugs(5);
+  const allSlugs = await getAllSlugs();
   return {
     paths: allSlugs.map(({ slug }) => `/blog/${slug}`),
-    fallback: "blocking",
+    fallback: false,
   };
 }
 
